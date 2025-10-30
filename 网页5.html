@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apocalypse: Dust and Blood</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(20, 20, 30, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(40, 20, 20, 0.6) 0%, transparent 50%),
+                linear-gradient(to bottom, #0a0a12, #1a1a22, #0a0a12);
+            color: #c0c0c0;
+            line-height: 1.6;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(40, 20, 20, 0.1) 2px, rgba(40, 20, 20, 0.1) 4px),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23303040" stroke-width="1" stroke-dasharray="5,5" /></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 军事风格头部 */
+        header {
+            background: 
+                linear-gradient(to bottom, rgba(15, 15, 25, 0.95), rgba(10, 10, 20, 0.9));
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #3a2a2a;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+/* 替换现有的文字logo为图片logo */
+.logo-image {
+    width: 180px; /* 根据您的logo尺寸调整 */
+    height: 50px; /* 根据您的logo尺寸调整 */
+    object-fit: contain;
+}
+
+/* 隐藏原来的文字部分 */
+.logo-text {
+    display: none;
+}
+        
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(to right, #8b4513, #a0522d, #8b4513);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+            margin-left: 15px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 40px;
+            background: 
+                linear-gradient(45deg, #5d4037, #8b4513);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1a1a22;
+            font-weight: bold;
+            font-size: 16px;
+            border: 1px solid #8b4513;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 85% 0, 100% 100%, 15% 100%);
+        }
+        
+        .logo-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.5), transparent);
+            animation: rustShine 3s infinite linear;
+        }
+        
+        @keyframes rustShine {
+            0% { left: -20px; }
+            100% { left: calc(100% + 20px); }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b4513;
+            transition: width 0.3s ease;
+        }
+        
+        nav li:hover::after {
+            width: 100%;
+        }
+        
+        nav a {
+            color: #a0522d;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #cd853f;
+            border: 1px solid #8b4513;
+            background: rgba(139, 69, 19, 0.1);
+        }
+        
+        /* 英雄区域 */
+       .hero {
+    text-align: center;
+    padding: 120px 0;
+    background: 
+        /* 原有的渐变效果 */
+        radial-gradient(circle at 30% 30%, rgba(80, 40, 20, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(40, 20, 20, 0.4) 0%, transparent 50%),
+        /* PNG 图片背景 */
+        url('images/hero-background.png'),
+        /* 原有的 SVG 图案作为纹理 */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M0,0 L200,200 M200,0 L0,200" stroke="%238b4513" stroke-width="1" stroke-opacity="0.1" /></svg>');
+    background-size: cover, cover, auto;
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, repeat;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+        .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1500px; /* 增加最大宽度 */
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #cd853f;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    display: inline-block; /* 改为 inline-block */
+    padding-bottom: 15px;
+    text-align: center; /* 确保文字居中 */
+    width: 100%; /* 确保宽度充满容器 */
+}
+
+.hero h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #8b4513, #a0522d, #8b4513, transparent);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #c0c0c0;
+    line-height: 1.8;
+    text-align: center; /* 确保段落居中 */
+    width: 100%; /* 确保宽度充满容器 */
+}
+        
+        /* 军事风格按钮 */
+        .btn {
+            display: inline-block;
+            background: 
+                linear-gradient(to right, #5d4037, #8b4513, #5d4037);
+            color: #1a1a22;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #cd853f;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8b4513, #a0522d, #8b4513, transparent);
+        }
+        
+        /* Tab content area */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 军事风格卡片 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: 
+                linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid #3a2a2a;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #5d4037, #8b4513, #a0522d);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: #8b4513;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 60px;
+            background: linear-gradient(45deg, #5d4037, #8b4513);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: #1a1a22;
+            border: 1px solid #8b4513;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+        }
+        
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        
+        .feature-card:hover .feature-icon::before {
+            top: 50%;
+            left: 50%;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #cd853f;
+        }
+        
+        .feature-card p {
+            margin-bottom: 20px;
+            color: #a0a0a0;
+        }
+        
+        .feature-link {
+            display: inline-block;
+            color: #a0522d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .feature-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b4513;
+            transition: width 0.3s ease;
+        }
+        
+        .feature-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-link:hover {
+            color: #cd853f;
+        }
+        
+        /* 动态效果 */
+        .falling-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .dust-particle {
+            position: absolute;
+            background: rgba(160, 160, 160, 0.3);
+            border-radius: 50%;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .radiation-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle, rgba(139, 69, 19, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(139, 69, 19, 0.5), transparent);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+        }
+        
+        /* 在 .hero p 样式之后 */
+
+.typing-text {
+    overflow: hidden;
+    border-right: 2px solid #8b4513;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 4s steps(35, end), blink-caret 0.75s step-end infinite;
+    display: inline-block;
+    text-align: center;
+    font-size: 3.5rem;
+    color: #cd853f;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 15px;
+    width: auto;
+    max-width: 90%;
+}
+
+.typing-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #8b4513, #a0522d, #8b4513, transparent);
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #8b4513 }
+}
+
+        /* 军事风格边框 */
+        .military-border {
+            border: 1px solid #3a2a2a;
+            position: relative;
+            background: 
+                linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+        }
+        
+        .military-border::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            pointer-events: none;
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+        }
+
+        /* 页面内容样式 */
+        .page-content {
+            padding: 40px 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #cd853f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #8b4513, #a0522d);
+        }
+        
+        .content-section {
+            background: 
+                linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid #3a2a2a;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            color: #cd853f;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 10px;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-section li {
+            margin-bottom: 10px;
+            color: #c0c0c0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            background: rgba(35, 35, 45, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #555;
+            position: relative;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.4rem;
+            color: #cd853f;
+            margin-bottom: 15px;
+        }
+        
+        .character-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .character-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 3px solid #8b4513;
+            position: relative;
+        }
+        
+        .character-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.2), transparent);
+            z-index: 1;
+        }
+        
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+.character-image-rectangular {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 3px solid #8b4513;
+    position: relative;
+    background: 
+        /* 末世风格的背景渐变 */
+        linear-gradient(135deg, rgba(60, 30, 10, 0.9) 0%, rgba(30, 15, 5, 0.8) 50%, rgba(15, 8, 3, 0.9) 100%),
+        /* 锈迹纹理 */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235d4037" opacity="0.3"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80 M20,0 L20,100 M40,0 L40,100 M60,0 L60,100 M80,0 L80,100" stroke="%238b4513" stroke-width="1" stroke-opacity="0.2"/></svg>'),
+        /* 裂纹效果 */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M30,50 Q80,30 120,70 Q160,100 180,150 M50,80 Q100,60 150,100 M70,120 Q120,100 160,140" stroke="%233a2a2a" stroke-width="2" fill="none" stroke-opacity="0.3"/></svg>');
+    clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.3) inset;
+}
+
+.character-image-rectangular::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* 辐射光晕效果 */
+        radial-gradient(circle at 30% 30%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(160, 82, 45, 0.1) 0%, transparent 50%),
+        /* 灰尘颗粒效果 */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><circle cx="10" cy="10" r="1" fill="%23c0c0c0" opacity="0.1"/><circle cx="35" cy="15" r="0.8" fill="%23c0c0c0" opacity="0.1"/><circle cx="25" cy="40" r="1.2" fill="%23c0c0c0" opacity="0.1"/><circle cx="45" cy="35" r="0.7" fill="%23c0c0c0" opacity="0.1"/></svg>');
+    z-index: 1;
+    pointer-events: none;
+}
+
+.character-image-rectangular::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(139, 69, 19, 0.1) 25%, 
+        transparent 50%, 
+        rgba(160, 82, 45, 0.1) 75%, 
+        transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+    animation: backgroundShine 8s infinite linear;
+}
+
+@keyframes backgroundShine {
+    0% { background-position: -100% -100%; }
+    100% { background-position: 200% 200%; }
+}
+
+.character-image-rectangular img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+    mix-blend-mode: normal;
+    filter: sepia(0.3) contrast(1.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.character-image-rectangular img:hover {
+    transform: scale(1.05);
+}
+
+        
+        .character-details {
+            max-width: 600px;
+        }
+        
+        .character-details h2 {
+            font-size: 2rem;
+            color: #cd853f;
+            margin-bottom: 15px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            color: #cd853f;
+            font-weight: bold;
+        }
+        
+        .stat-name {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+
+
+/* 大约在第485行左右，在现有的 .stat-value 样式后面添加 */
+
+.stat-value {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.stat-value i {
+    font-size: 1.2rem;
+    color: #cd853f; /* 实心圆颜色 - 铜色 */
+    text-shadow: 0 0 5px rgba(205, 133, 63, 0.5);
+    transition: all 0.3s ease;
+}
+
+.stat-value .far.fa-circle {
+    color: #5d4037; /* 空心圆颜色 - 深棕色 */
+    opacity: 0.4;
+}
+
+.stat-value i:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 8px rgba(205, 133, 63, 0.8);
+}
+
+.stat-name {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-top: 5px;
+}
+        
+        /* 角色特殊能力样式 */
+        .character-abilities {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .ability-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: rgba(35, 35, 45, 0.5);
+            border-radius: 4px;
+            border-left: 3px solid #8b4513;
+        }
+
+        .ability-name {
+            font-weight: bold;
+            color: #cd853f;
+            flex: 0 0 120px;
+            text-align: left;
+        }
+
+        .ability-description {
+            flex: 1;
+            color: #c0c0c0;
+            text-align: left;
+        }
+        
+        /* 媒体内容样式 */
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .media-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            height: 200px;
+        }
+        
+        .media-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .media-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.8);
+            padding: 10px;
+            text-align: center;
+            color: #cd853f;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 30px 0;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 场景网格样式 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .scene-card {
+            background: 
+                linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid #3a2a2a;
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+        }
+        
+        .scene-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .scene-image {
+            height: 200px;
+            background-color: #2a2a35;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #8b4513;
+            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scene-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+        }
+        
+        .scene-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+        
+        .scene-card:hover .scene-image img {
+            transform: scale(1.1);
+        }
+        
+        .scene-content {
+            padding: 20px;
+        }
+        
+        .scene-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #cd853f;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: #a0522d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .back-btn::before {
+            content: '←';
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btn:hover::before {
+            transform: translateX(-5px);
+        }
+        
+        .back-btn:hover {
+            color: #cd853f;
+        }
+        
+        footer {
+            background: rgba(10, 10, 15, 0.9);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #3a2a2a;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 69, 19, 0.2);
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #a0522d;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #8b4513;
+            color: #1a1a22;
+            transform: translateY(-3px);
+        }
+        
+        /* 图片放大模态框样式 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(139, 69, 19, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #cd853f;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10001;
+        }
+        
+        .close-modal:hover {
+            color: #cd853f;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .feature-grid, .media-container, .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stat {
+                margin: 10px;
+            }
+            
+            .ability-item {
+                flex-direction: column;
+            }
+            
+            .ability-name {
+                flex: 0 0 auto;
+                margin-bottom: 5px;
+            }
+            
+            .character-image-rectangular {
+                width: 100%;
+                max-width: 400px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态效果层 -->
+    <div class="falling-dust" id="fallingDust"></div>
+    <div class="radiation-pulse"></div>
+    <div class="scan-line"></div>
+    
+    <!-- 图片放大模态框 -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+    
+    <header>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="images/logo.png" alt="Apocalypse: Dust and Blood" class="logo-image">
+        </div>
+        <nav>
+            <ul>
+                <li><a class="nav-link active" data-tab="home">Home Page</a></li>
+                <li><a class="nav-link" data-tab="gameplay">Gameplay</a></li>
+                <li><a class="nav-link" data-tab="characters">Survivors</a></li>
+                <li><a class="nav-link" data-tab="worldview">Backgrounds</a></li>
+                <li><a class="nav-link" data-tab="features">Features</a></li>
+                <li><a class="nav-link" data-tab="scenes">Scenes</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    <!-- 主页界面 -->
+    <div id="home" class="tab-content active">
+        <section class="hero">
+            <div class="container hero-content">
+                <h2 class="typing-text">Apocalypse: Dust and Blood</h2>
+                <p>Struggle to survive in a world destroyed by nuclear war, build shelters, find resources, fight mutated creatures and hostile survivor groups.</p>
+                <a class="btn hover-glow" id="explore-btn">Explore the Dust</a>
+            </div>
+        </section>
+
+<!-- 游戏玩法大概 -->
+
+        <section id="gameplay-preview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Apocalyptic Gameplay</h2>
+                </div>
+                <div class="features">
+                    <div class="feature-card military-border hover-glow">
+                        <div class="feature-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>Resources Gathering</h3>
+                        <p>Dive into the dust and loot for resources, craft weapons, medicines and be ready to fight any enemies.</p>
+                        <a class="feature-link nav-link" data-tab="gameplay">Learn More →</a>
+                    </div>
+                    <div class="feature-card military-border hover-glow">
+                        <div class="feature-icon">
+                            <i class="fas fa-binoculars"></i>
+                        </div>
+                        <h3>Avoid radiation zone</h3>
+                        <p>Lethal radiation will gradually devour the dust, be aware, and avoid it!</p>
+                        <a class="feature-link nav-link" data-tab="gameplay">Learn More →</a>
+                    </div>
+                    <div class="feature-card military-border hover-glow">
+                        <div class="feature-icon">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <h3>Survive as last</h3>
+                        <p>Confront with other survivors, struggle the spite visciously, and survive on your own, there are no friends on the dust.</p>
+                        <a class="feature-link nav-link" data-tab="gameplay">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 角色介绍大概 -->
+
+        <section id="characters-preview">
+    <div class="container">
+        <div class="section-title">
+            <h2>Survivors</h2>
+        </div>
+        <div class="features">
+            <div class="feature-card military-border hover-glow">
+                <div class="feature-icon">
+                    <img src="images/gravedigger.jpg" alt="The Gravedigger" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>The 'Gravedigger'</h3>
+                <p>He's the last gravedigger wondering on the dust, his name is 'Grayson'. He keeps the dead resting peacefully.</p>
+                <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+            </div>
+
+            <div class="feature-card military-border hover-glow">
+                <div class="feature-icon">
+                    <i class="fas fa-theater-masks"></i>
+                </div>
+                <h3>The 'Trickster'</h3>
+                <p>She's the most lethal hunter on this dust, when you see Qira's trick, you know you can never get away with it anymore.</p>
+                <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+            </div>
+
+            <div class="feature-card military-border hover-glow">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>The 'StarBorn'</h3>
+                <p>She is the child of the stars, the one who has received the blessings of the stars on this land, and is protected by the multitude of stars.</p>
+                <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+            </div>
+
+            <div class="feature-card military-border hover-glow">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>The 'Overseer'</h3>
+                <p>Baxter was the most stern and ruthless overseer on the dust. Anyone who attempted to disobey him would be punished severely.</p>
+                <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+            </div>
+
+<div class="feature-card military-border hover-glow">
+                        <div class="feature-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>The 'Chemist'</h3>
+                        <p>Once Vesper was a doctor in the chemistry department. Now, on the dust, she has received divine blessings, transforming her chemical knowledge into extraordinary power.</p>
+                        <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+                    </div>
+
+<div class="feature-card military-border hover-glow">
+                        <div class="feature-icon">
+                            <i class="fas fa-ghost"></i>
+                        </div>
+                        <h3>The 'Wraith'</h3>
+                        <p>Silas is the avenger wandering in the dust. He operates secretly, and no one ever knows his whereabouts. All that is known is that he has a pair of deep blue eyes.</p>
+                        <a class="feature-link nav-link" data-tab="characters">View Details →</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="scenes-preview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Wasteland Scenes</h2>
+                </div>
+                <div class="scenes-grid">
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/abandoned-city.png" alt="Abandoned City">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Abandoned Nuclear Plant</h3>
+                            <p>Once a bustling metropolis, now only ruins and danger remain.</p>
+                            <a class="feature-link nav-link" data-tab="scenes">Explore Scene →</a>
+                        </div>
+                    </div>
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/desert-wasteland.png" alt="Desert Wasteland">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Old World City Ruins (Gateway to the Old World 2)</h3>
+                            <p>Endless desert, hiding ancient secrets and dangers.</p>
+                            <a class="feature-link nav-link" data-tab="scenes">Explore Scene →</a>
+                        </div>
+                    </div>
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/underground-shelter.png" alt="Underground Shelter">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Derelict Survival's Settlements</h3>
+                            <p>Humanity's last refuge, but also full of unknown dangers.</p>
+                            <a class="feature-link nav-link" data-tab="scenes">Explore Scene →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 玩法界面 -->
+    <div id="gameplay" class="tab-content">
+        <div class="container page-content">
+            <div class="page-header">
+                <h1>Apocalyptic Survival Gameplay</h1>
+                <p>Explore, survive and build in the post-nuclear wasteland world</p>
+            </div>
+
+            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+            <div class="content-section military-border">
+                <h2>Radiation Zone Exploration</h2>
+                <p>Venture into high-radiation areas to find precious resources, but beware of mutated creatures and radiation poisoning. Radiation zones contain remnants of pre-war technology, but are also full of dangers.</p>
+                
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="images/radiation-zone.png" alt="Radiation Zone Exploration">
+                        <div class="media-caption">High-radiation areas are full of dangers</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="images/resource-collection.png" alt="Resource Collection">
+                        <div class="media-caption">Searching for precious resources</div>
+                    </div>
+                </div>
+                
+                <h3>Exploration Mechanics</h3>
+                <ul>
+                    <li>Dynamic weather system affects radiation levels and visibility</li>
+                    <li>Use Geiger counters to detect radiation levels</li>
+                    <li>Radiation protection equipment degrades over time and requires regular maintenance</li>
+                    <li>Discover hidden underground shelters and military facilities</li>
+                </ul>
+                
+                <div class="feature-grid">
+                    <div class="feature-item military-border">
+                        <h3>Resource Collection</h3>
+                        <p>Search for useful supplies in ruins: food, medicine, weapon parts and technology blueprints.</p>
+                    </div>
+                    <div class="feature-item military-border">
+                        <h3>Dangerous Environment</h3>
+                        <p>Deal with threats from radiation storms, acid rain and mutated creatures, every step could be a life-or-death decision.</p>
+                    </div>
+                    <div class="feature-item military-border">
+                        <h3>Map Exploration</h3>
+                        <p>Unlock new areas, each with unique environmental challenges and resource types.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section military-border">
+                <h2>Gameplay Demonstration</h2>
+                <p>Loot, craft, empower yourself, fight and survive.</p>
+                
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="images/shelter-exterior.png" alt="Shelter Exterior">
+                        <div class="media-caption">Shelter exterior defense</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="images/shelter-interior.png" alt="Shelter Interior">
+                        <div class="media-caption">Shelter interior facilities</div>
+                    </div>
+                </div>
+                
+                <h3>Construction System</h3>
+                <ul>
+                    <li>Modular building system, freely design shelter layout</li>
+                    <li>Upgrade defense facilities to deal with increasingly powerful threats</li>
+                    <li>Establish hydroponic farms and water purification systems to ensure food supply</li>
+                    <li>Recruit survivors and assign work tasks</li>
+                </ul>
+                
+                <div class="video-container">
+                    <!-- 插入视频 -->
+                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center; margin-top: 10px;">Shelter Construction Tutorial Video</p>
+            </div>
+        </div>
+
+
+
+
+<!-- 在Gameplay页面的现有内容之后添加以下代码 -->
+
+<!-- 黑色幸存者风格玩法区域 -->
+<div class="content-section military-border">
+    <h2>Core Gameplay simulation</h2>
+    <p>Text-based Battle Royal, avoid radiation zone, search for resources, confront other survivors on the dust, fight, and do whatever to survive. For more details, please check the video above.</p>
+    
+    <!-- 核心玩法流程图 -->
+    <div class="gameplay-flow">
+        <h3>Core gameplay</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-icon">🔍</div>
+                <div class="step-text">区域搜索</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">🛠️</div>
+                <div class="step-text">装备制作</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">⚔️</div>
+                <div class="step-text">生存对抗</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">☢️</div>
+                <div class="step-text">躲避辐射</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 区域搜索系统 -->
+<div class="content-section military-border">
+    <h2>区域搜索系统</h2>
+    <p>在不同区域中搜索资源，每个区域提供独特的物品和危险</p>
+    
+    <div class="search-mechanic">
+        <div class="area-grid">
+            <div class="area-card military-border" data-area="hospital" onclick="searchArea('hospital')">
+                <div class="area-icon">🏥</div>
+                <h4>废弃医院</h4>
+                <p class="area-resources">资源：医疗用品、绷带、药物</p>
+                <div class="search-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <button class="search-btn">搜索区域</button>
+            </div>
+            
+            <div class="area-card military-border" data-area="factory" onclick="searchArea('factory')">
+                <div class="area-icon">🏭</div>
+                <h4>旧工厂</h4>
+                <p class="area-resources">资源：金属零件、工具、电子元件</p>
+                <div class="search-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <button class="search-btn">搜索区域</button>
+            </div>
+            
+            <div class="area-card military-border" data-area="school" onclick="searchArea('school')">
+                <div class="area-icon">🏫</div>
+                <h4>废弃学校</h4>
+                <p class="area-resources">资源：书籍、食物、日常用品</p>
+                <div class="search-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <button class="search-btn">搜索区域</button>
+            </div>
+            
+            <div class="area-card military-border" data-area="military" onclick="searchArea('military')">
+                <div class="area-icon">🎯</div>
+                <h4>军事基地</h4>
+                <p class="area-resources">资源：武器、弹药、防具</p>
+                <div class="search-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <button class="search-btn">搜索区域</button>
+            </div>
+        </div>
+        
+        <div class="search-results" id="searchResults">
+            <h4>搜索成果</h4>
+            <div class="results-container" id="resultsContainer">
+                <p class="no-results">点击上方区域卡片开始搜索...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 制作合成系统 -->
+<div class="content-section military-border">
+    <h2>物品制作系统</h2>
+    <p>将收集到的资源合成为更强大的装备和生存工具</p>
+    
+    <div class="crafting-system">
+        <div class="crafting-recipes">
+            <div class="recipe-card military-border">
+                <h4>简易矛</h4>
+                <div class="materials">
+                    <span class="material-item">金属管 ×1</span>
+                    <span class="material-operator">+</span>
+                    <span class="material-item">布料 ×2</span>
+                </div>
+                <div class="craft-result">→ 简易矛</div>
+                <button class="craft-btn" onclick="craftItem('spear')">制作</button>
+            </div>
+            
+            <div class="recipe-card military-border">
+                <h4>医疗包</h4>
+                <div class="materials">
+                    <span class="material-item">绷带 ×2</span>
+                    <span class="material-operator">+</span>
+                    <span class="material-item">酒精 ×1</span>
+                </div>
+                <div class="craft-result">→ 医疗包</div>
+                <button class="craft-btn" onclick="craftItem('medkit')">制作</button>
+            </div>
+            
+            <div class="recipe-card military-border">
+                <h4>防毒面具</h4>
+                <div class="materials">
+                    <span class="material-item">塑料瓶 ×1</span>
+                    <span class="material-operator">+</span>
+                    <span class="material-item">过滤器 ×1</span>
+                    <span class="material-operator">+</span>
+                    <span class="material-item">橡皮筋 ×2</span>
+                </div>
+                <div class="craft-result">→ 防毒面具</div>
+                <button class="craft-btn" onclick="craftItem('mask')">制作</button>
+            </div>
+        </div>
+        
+        <div class="inventory">
+            <h4>当前库存</h4>
+            <div class="inventory-items" id="inventoryItems">
+                <div class="inventory-item">金属管: <span id="metalPipeCount">0</span></div>
+                <div class="inventory-item">布料: <span id="clothCount">0</span></div>
+                <div class="inventory-item">绷带: <span id="bandageCount">0</span></div>
+                <div class="inventory-item">酒精: <span id="alcoholCount">0</span></div>
+                <div class="inventory-item">塑料瓶: <span id="bottleCount">0</span></div>
+                <div class="inventory-item">过滤器: <span id="filterCount">0</span></div>
+                <div class="inventory-item">橡皮筋: <span id="rubberBandCount">0</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<
+<style>
+/* 玩法特有样式 */
+.gameplay-flow {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.flow-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.flow-step {
+    text-align: center;
+    padding: 15px;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 8px;
+    min-width: 100px;
+}
+
+.step-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.step-text {
+    font-weight: bold;
+    color: #cd853f;
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: #8b4513;
+}
+
+/* 区域搜索系统样式 */
+.search-mechanic {
+    margin-top: 20px;
+}
+
+.area-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.area-card {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b4513;
+}
+
+.area-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.area-resources {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+.search-progress {
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #8b4513, #cd853f);
+    width: 0%;
+    transition: width 2s ease;
+}
+
+.search-btn {
+    background: #8b4513;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.search-results {
+    background: rgba(35, 35, 45, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.results-container {
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.found-item {
+    background: rgba(139, 69, 19, 0.3);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 3px solid #cd853f;
+}
+
+/* 制作系统样式 */
+.crafting-system {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.crafting-recipes {
+    display: grid;
+    gap: 15px;
+}
+
+.recipe-card {
+    padding: 15px;
+    text-align: center;
+}
+
+.materials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.material-item {
+    background: rgba(139, 69, 19, 0.2);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.material-operator {
+    color: #cd853f;
+    font-weight: bold;
+}
+
+.craft-result {
+    color: #cd853f;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.craft-btn {
+    background: #5d4037;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.craft-btn:hover {
+    background: #8b4513;
+}
+
+.inventory {
+    background: rgba(35, 35, 45, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.inventory-items {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #333;
+}
+
+/* 辐射区系统样式 */
+.radiation-zone-system {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.zone-map-container {
+    position: relative;
+}
+
+.zone-map {
+    width: 100%;
+    height: 300px;
+    background: #1a1a22;
+    border: 2px solid #8b4513;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.safe-zone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: rgba(34, 139, 34, 0.3);
+    border: 2px dashed #228b22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 5s ease;
+}
+
+.radiation-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(139, 69, 19, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.player-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+.zone-label {
+    color: #228b22;
+    font-weight: bold;
+}
+
+.zone-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.timer-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #cd853f;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.zone-stats {
+    display: grid;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+}
+
+.stat-label {
+    color: #a0a0a0;
+}
+
+.stat-value {
+    color: #cd853f;
+    font-weight: bold;
+}
+
+.simulate-zone-btn {
+    background: linear-gradient(to right, #5d4037, #8b4513);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.simulate-zone-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
+}
+
+/* 角色优势样式 */
+.advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.advantage-card {
+    padding: 20px;
+    text-align: center;
+}
+
+.advantage-card h4 {
+    color: #cd853f;
+    margin-bottom: 15px;
+}
+
+.advantage-card p {
+    margin: 8px 0;
+    text-align: left;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .crafting-system,
+    .radiation-zone-system {
+        grid-template-columns: 1fr;
+    }
+    
+    .flow-steps {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+}
+</style>
+
+<script>
+// 搜索系统功能
+function searchArea(area) {
+    const resources = {
+        'hospital': ['绷带', '抗生素', '手术刀', '酒精', '医疗包'],
+        'factory': ['金属管', '齿轮', '电线', '过滤器', '工具'],
+        'school': ['书籍', '罐头食品', '水瓶', '橡皮筋', '背包'],
+        'military': ['手枪', '弹药', '防弹衣', '军用口粮', '望远镜']
+    };
+    
+    const areaCards = document.querySelectorAll('.area-card');
+    areaCards.forEach(card => {
+        if (card.dataset.area === area) {
+            const progressBar = card.querySelector('.progress-bar');
+            progressBar.style.width = '100%';
+            
+            setTimeout(() => {
+                progressBar.style.width = '0%';
+                const foundItems = getRandomItems(resources[area], 2);
+                showSearchResults(foundItems);
+                updateInventory(foundItems);
+            }, 2000);
+        }
+    });
+}
+
+function getRandomItems(array, count) {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+function showSearchResults(items) {
+    const container = document.getElementById('resultsContainer');
+    container.innerHTML = '';
+    
+    items.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'found-item';
+        itemElement.textContent = `找到: ${item}`;
+        container.appendChild(itemElement);
+    });
+}
+
+// 库存管理系统
+let inventory = {
+    '金属管': 0, '布料': 0, '绷带': 0, '酒精': 0,
+    '塑料瓶': 0, '过滤器': 0, '橡皮筋': 0
+};
+
+function updateInventory(items) {
+    items.forEach(item => {
+        if (inventory.hasOwnProperty(item)) {
+            inventory[item]++;
+            updateInventoryDisplay();
+        }
+    });
+}
+
+function updateInventoryDisplay() {
+    for (const [item, count] of Object.entries(inventory)) {
+        const element = document.getElementById(getElementId(item));
+        if (element) {
+            element.textContent = count;
+        }
+    }
+}
+
+function getElementId(item) {
+    const ids = {
+        '金属管': 'metalPipeCount',
+        '布料': 'clothCount',
+        '绷带': 'bandageCount',
+        '酒精': 'alcoholCount',
+        '塑料瓶': 'bottleCount',
+        '过滤器': 'filterCount',
+        '橡皮筋': 'rubberBandCount'
+    };
+    return ids[item] || item + 'Count';
+}
+
+// 制作系统功能
+function craftItem(itemType) {
+    const recipes = {
+        'spear': { materials: { '金属管': 1, '布料': 2 }, result: '简易矛' },
+        'medkit': { materials: { '绷带': 2, '酒精': 1 }, result: '医疗包' },
+        'mask': { materials: { '塑料瓶': 1, '过滤器': 1, '橡皮筋': 2 }, result: '防毒面具' }
+    };
+    
+    const recipe = recipes[itemType];
+    if (recipe && hasMaterials(recipe.materials)) {
+        useMaterials(recipe.materials);
+        alert(`Crafting Complete!: ${recipe.result}`);
+        updateInventoryDisplay();
+    } else {
+        alert('No Enough Materials！');
+    }
+}
+
+function hasMaterials(materials) {
+    for (const [material, required] of Object.entries(materials)) {
+        if (inventory[material] < required) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function useMaterials(materials) {
+    for (const [material, amount] of Object.entries(materials)) {
+        inventory[material] -= amount;
+    }
+}
+
+
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+    updateInventoryDisplay();
+});
+</script>
+    </div>
+
+
+
+
+    <!-- 角色界面 -->
+    <div id="characters" class="tab-content">
+        <div class="container page-content">
+            <div class="page-header">
+                <h1>Survivor Characters</h1>
+                <p>Meet the various characters struggling to survive in the wasteland</p>
+            </div>
+
+            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+									
+	 <!-- 游戏角色介绍 -->
+
+
+            <div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/gravedigger.jpg" alt="The Gravedigger">
+    </div>
+    <div class="character-details">
+        <h2>The 'Gravedigger'</h2>
+        <p>Grayson wears a tattered priest's robe, caked with soil, over which he has crudely strapped together armor made from broken gravestones and rotting wood. His weapon is a heavily worn pickaxe. His face is gaunt, yet his gaze is as unshakable as stone. A heavy scent of earth and rust seems to cling to him at all times.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Search Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Stealth</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Collector':</span>
+                <span class="ability-description">Gains extra materials from non-player enemies; recovers faster in specific zones; deals increased damage to monsters.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Untomb':</span>
+                <span class="ability-description">Deals 150% damage to non-player enemies; gain an extra item in searchings</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Tiredness':</span>
+                <span class="ability-description">resting gains 30% more stamina</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/trickster.jpg" alt="The Trickster">
+    </div>
+    <div class="character-details">
+        <h2>The 'Trickster'</h2>
+        <p>Qira was dressed in a luxurious outfit made from bright fabrics and scattered metal pieces, with a damaged and painted mask half covering her face. She moved as agilely as a cat, wearing various small ornaments and scattered odds and ends, which jingled as she moved. Her smile was cunning and alluring, always carrying a touch of mischief.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Search Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Stealth</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Cunning':</span>
+                <span class="ability-description">Crafts traps and decoys; gains advantages in trading; moves faster as areas become restricted.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Lethal pitfall':</span>
+                <span class="ability-description">The trapped enemies instead takes 300% of the damage you dealt and is immobilized for 5 seconds.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Hunter's instinct':</span>
+                <span class="ability-description">When it comes to the shrinking of zone, Qira gain 30% quickness (searching takes 30% less time)</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/starborn.jpg" alt="The StarBorn">
+    </div>
+    <div class="character-details">
+        <h2>The 'StarBorn'</h2>
+        <p>She is the child of the stars, the one who has received the blessings of the stars on this land, and is protected by the multitude of stars.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Search Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Stealth</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Starlight Blessing':</span>
+                <span class="ability-description">Heals allies in moonlight; gains enhanced abilities during night time.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Celestial Protection':</span>
+                <span class="ability-description">Creates protective barriers that reduce incoming damage by 50%.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Cosmic Vision':</span>
+                <span class="ability-description">Can see hidden paths and secrets under starry skies.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/overseer.jpg" alt="The Overseer">
+    </div>
+    <div class="character-details">
+        <h2>The 'Overseer'</h2>
+        <p>Baxter was the most stern and ruthless overseer on the dust. Anyone who attempted to disobey him would be punished severely.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Search Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Leadership</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Commanding Presence':</span>
+                <span class="ability-description">Allies within range gain 20% increased damage and defense.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Iron Discipline':</span>
+                <span class="ability-description">Enemies are 25% more likely to flee when facing the Overseer.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Strategic Planning':</span>
+                <span class="ability-description">Reveals enemy positions and weaknesses in controlled areas.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/chemist.jpg" alt="The Chemist">
+    </div>
+    <div class="character-details">
+        <h2>The 'Chemist'</h2>
+        <p>Master of potions and chemical compounds, creating powerful elixirs from the wasteland's rare resources.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Crafting</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Research</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Alchemical Mastery':</span>
+                <span class="ability-description">Creates powerful potions that provide temporary buffs and heal allies.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Toxic Brew':</span>
+                <span class="ability-description">Crafts poisons that deal damage over time and weaken enemies.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Resource Efficiency':</span>
+                <span class="ability-description">Uses 30% fewer materials when crafting chemical items.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="character-profile">
+    <div class="character-image-rectangular">
+        <img src="images/scout.jpg" alt="The Scout">
+    </div>
+    <div class="character-details">
+        <h2>The 'Scout'</h2>
+        <p>Expert navigator and tracker, capable of finding safe paths through the most dangerous territories.</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Navigation</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="stat-name">Combat Ability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="stat-name">Stealth</div>
+            </div>
+        </div>
+        
+        <h3>Special Abilities</h3>
+        <div class="character-abilities">
+            <div class="ability-item">
+                <span class="ability-name">'Pathfinder':</span>
+                <span class="ability-description">Reveals hidden paths and shortcuts on the map.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Eagle Eye':</span>
+                <span class="ability-description">Spots enemies and resources from twice the normal distance.</span>
+            </div>
+            <div class="ability-item">
+                <span class="ability-name">'Silent Movement':</span>
+                <span class="ability-description">Moves 40% quieter and leaves no tracks.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <!-- 世界观设计 -->
+    <div id="worldview" class="tab-content">
+        <div class="container page-content">
+            <div class="page-header">
+                <h1>World Setting</h1>
+                <p>History and background of the post-nuclear wasteland world</p>
+            </div>
+
+            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+            <div class="content-section military-border">
+    <h2>The Great Destruction</h2>
+    <p>In 2077, the twilight of human civilization arrived. A global nuclear war known as "The Great Catastrophe" wiped out the civilization achievements of humanity in just seven hours. Cities turned into ruins, the earth was covered with radioactive dust, and the sky was shrouded in eternal gloom.</p>
+    
+    <p>The nuclear winter lasted for a full twenty years. When the survivors finally emerged from their underground shelters and climbed back to the surface, they found a world completely transformed. The once prosperous cities now only had distorted steel skeletons, covered in radioactive dust and rust. The natural ecosystem had completely collapsed, replaced by all kinds of strange creatures mutated by radiation.</p>
+    
+    <p>Fifty years later, the world is divided into several distinct regions: Old World and New World </p>
+
+<h2> Old World </h2>
+
+<h3> Old World City Ruins </h3>
+
+<p>The ruins of the old world, where once prosperous cities stood, have completely fallen into disrepair and have been reoccupied by wild plants. Hospitals, Residential houses, school.......They are almost deserted and seem to be full of vitality compared to the new world. Here, you can search for the resources of the old world, the remaining high-tech items from the past. By making use of them, you are sure to carve out a new path in the new world. </p>
+
+
+<h2> New World </h2>
+    
+    <h3>Dust</h3>
+    <p>The vast desert and wasteland seem relatively safe on the surface, but in reality they are full of hidden dangers. Sandstorms, extreme temperature differences, scarce resources, and mutated creatures lurking beneath the sand dunes make traversing this area a life-and-death challenge.</p>
+    
+    <h3>Survivor Outposts</h3>
+    <p>The Last Spark of Human Civilization. From rudimentary shantytowns to relatively well-structured underground shelters, these outposts are important places for survivors to conduct transactions, rest, and obtain information. However, even these "safe zones" often become targets of attackers.</p>
+
+
+    
+    <p>In this world, the constraints of morality and law have long ceased to exist. The survivors have split into multiple factions:</p>
+
+<h2> New Factions, Associations and Forces on the dust </h2>
+    
+    <h3>The New California Republic</h3>
+    <p>An organization that attempts to restore the pre-war government system, possessing the most advanced technology and military strength, but severely hindered by bureaucracy.</p>
+    
+    <h3>The Raiders' Tribe</h3>
+    <p>A savage group of survivors who make a living by engaging in violent plundering, occupying the core area of the ruined city.</p>
+    
+    <h3>The Technological Renaissance Society</h3>
+    <p>An organization dedicated to restoring pre-war technologies, possessing advanced manufacturing and medical techniques.</p>
+    
+    <h3>Wilderness Wanderers</h3>
+    <p>Solitary survivors who roam the wasteland relying on their knowledge of the wilderness and survival skills.</p>
+    
+    <p>The player will struggle to survive in this harsh world, having to confront natural threats such as radiation, hunger, and disease, as well as navigate among various factions and make crucial choices that will determine their fate. Every exploration may bring valuable resources or deadly dangers; every encounter may be a life-saving hand or a hidden dagger.</p>
+    
+    <p>This is the end times - a world where a civilization has perished, but human nature is still struggling to survive. Here, every drop of clean water is worth exchanging with blood, and every glimmer of hope may be swallowed up by endless dust in the next moment.</p>
+    
+    <div class="media-container">
+        <div class="media-item">
+            <img src="images/post-nuclear-world.png" alt="After Nuclear War">
+            <div class="media-caption">World scene after nuclear war</div>
+        </div>
+    </div>
+                
+                <h3>Historical Timeline</h3>
+                <ul>
+                    <li><strong>2077</strong> - Global nuclear war breaks out, known as "The Great Destruction"</li>
+                    <li><strong>2077-2097</strong> - Nuclear winter, surface almost uninhabitable</li>
+                    <li><strong>2097</strong> - First shelters open, survivors return to the surface</li>
+                    <li><strong>2105</strong> - First large settlement "New Hope" established</li>
+                    <li><strong>2127</strong> - Present, players begin their wasteland journey</li>
+                </ul>
+                
+                <div class="video-container">
+                    <!-- 视频插入 -->
+                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center; margin-top: 10px;">World Background Introduction Video</p>
+            </div>
+
+            <div class="content-section military-border">
+                <h2>Major Factions</h2>
+                <p>Multiple factions compete for power and resources in the wasteland, each with its own unique culture and goals.</p>
+                
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="images/ncr-base.png" alt="New California Republic">
+                        <div class="media-caption">New California Republic base</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="images/raider-camp.png" alt="Raider Tribe">
+                        <div class="media-caption">Raider tribe camp</div>
+                    </div>
+                </div>
+                
+                <h3>New California Republic</h3>
+                <p>Organization trying to rebuild pre-war government structure, has the most advanced technology and military power, but suffers from severe bureaucracy.</p>
+                
+                <h3>Raider Tribes</h3>
+                <p>Barbaric survivor groups, survive by violent plunder, occupy core areas of ruined cities.</p>
+                
+                <h3>Technology Revival Society</h3>
+                <p>Organization dedicated to restoring pre-war technology, masters advanced manufacturing and medical technology.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏特色 -->
+    <div id="features" class="tab-content">
+        <div class="container page-content">
+            <div class="page-header">
+                <h1>Game Features</h1>
+                <p>Unique game mechanics and experiences of Wasteland Rebirth</p>
+            </div>
+
+            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+            <div class="content-section military-border">
+                <h2>Hand-drawn art style</h2>
+                <p>All the characters and map scenes are hand-drawn</p>
+                
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="images/radiation-storm.png" alt="Radiation Storm">
+                        <div class="media-caption">Hand-drawn Characters</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="images/acid-rain.png" alt="Acid Rain">
+                        <div class="media-caption">Hand-drawn maps and scenes</div>
+                    </div>
+                </div>
+                
+                <h3>Unique Artistic Identity & Authenticity</h3>
+                <ul>
+                    <li>Amplifies Traces of "Humanity and Memory" in the Apocalypse</li>
+                    <li>Hand-drawn strokes and textures feel like charcoal sketches in a scavenged journal, carrying the warmth of a lost civilization</li>
+                    <li>Creates a poignant contrast against cold, rigid metal ruins, screaming "people lived here."</li>
+                    <li>Watercolor-style skies can depict toxic sunsets and radiation storms with haunting beauty</li>
+                    <li>Ink washes and rough textures perfectly embody decay, erosion, and the slow reclaiming of nature</li>
+                </ul>
+            </div>
+
+            <div class="content-section military-border">
+                <h2>Mutation System</h2>
+                <p>Exposure to radiation may cause mutations, gaining special abilities or disabilities, depending on your choices and luck.</p>
+                
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="images/beneficial-mutation.png" alt="Beneficial Mutation">
+                        <div class="media-caption">Beneficial mutation example</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="images/harmful-mutation.png" alt="Harmful Mutation">
+                        <div class="media-caption">Harmful mutation example</div>
+                    </div>
+                </div>
+                
+                <h3>Mutation Types</h3>
+                <div class="feature-grid">
+                    <div class="feature-item military-border">
+                        <h3>Beneficial Mutations</h3>
+                        <p>Night vision, radiation resistance, enhanced strength and other positive mutations</p>
+                    </div>
+                    <div class="feature-item military-border">
+                        <h3>Harmful Mutations</h3>
+                        <p>Radiation vulnerability, light sensitivity, reduced stamina and other negative mutations</p>
+                    </div>
+                    <div class="feature-item military-border">
+                        <h3>Appearance Changes</h3>
+                        <p>Visible mutation effects like skin discoloration, glowing eyes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- 游戏场景 - 已更新为两个区域，每个区域6个场景 -->
+    <div id="scenes" class="tab-content">
+        <div class="container page-content">
+            <div class="page-header">
+                <h1>Wasteland Scenes</h1>
+                <p>Explore 12 unique scenes after nuclear war</p>
+            </div>
+
+            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+            <!-- 新世界区域 -->
+            <div class="world-section">
+                <h2 class="world-section-title">The New World</h2>
+                <div class="scenes-grid">
+                    <!-- 场景1: 低语隧道 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/whispering-tunnels.png" alt="Whispering Tunnels">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Whispering Tunnels (Gateway to the Old World 1)</h3>
+                            <span class="scene-health">-30 Health</span>
+                            <p>A perilous passage where eerie whines echo through the wind, leading to the Old World.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景2: 广播塔 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/broadcast-tower.png" alt="Broadcast Tower">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Broadcast Tower</h3>
+                            <p>A rusted pinnacle towering over the area, incessantly transmitting chaotic signals.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景3: 旧世界遗址 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/old-world-ruins.png" alt="Old World City Ruins">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Old World City Ruins (Gateway to the Old World 2)</h3>
+                            <span class="scene-no-cost">No Cost</span>
+                            <p>A desolate landmark of piled metal wreckage and shattered concrete, hiding passages within.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景4: 废弃核电站 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/nuclear-plant.png" alt="Abandoned Nuclear Plant">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Abandoned Nuclear Plant</h3>
+                            <p>A silent exclusion zone shrouded in radioactive mist, glowing with a faint eerie green.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景5: 灾变森林 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/blighting-forest.png" alt="Blighting Forest">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Blighting Forest (Gateway to the Old World 3)</h3>
+                            <span class="scene-health">-50 Health</span>
+                            <p>A shadowy woods where trees twist into unnatural shapes and aberrant creatures lurk.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景6: 破败的幸存者聚集地 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/derelict-settlement.png" alt="Derelict Survival's Settlements">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Derelict Survival's Settlements</h3>
+                            <p>A desperate, makeshift settlement pieced together from scrap; tension and despair hang thick in the air.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 旧世界区域 -->
+            <div class="world-section">
+                <h2 class="world-section-title">The Old World</h2>
+                <div class="scenes-grid">
+                    <!-- 场景1: 住宅区 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/residential-district.png" alt="Residential District">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Residential District</h3>
+                            <p>Silent streets where the skeletons of high-rises stand half-buried in dust, all traces of past life long erased.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景2: 购物中心 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/shopping-mall.png" alt="Shopping Mall">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Shopping Mall</h3>
+                            <p>A vast ruin stripped bare—only shadows and echoes remain where commerce once thrived.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景3: 医院 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/hospital.png" alt="Hospital">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Hospital</h3>
+                            <p>A dark structure littered with medical debris and broken beds, thick with an ominous presence.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景4: 体育馆 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/sport-stadium.png" alt="Sport Stadium">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Sport Stadium</h3>
+                            <p>A massive hollow structure with collapsed stands, its arena swallowed by sand and weeds.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景5: 学校 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/school.png" alt="School">
+                        </div>
+                        <div class="scene-content">
+                            <h3>School</h3>
+                            <p>Classrooms strewn with decaying textbooks and walls covered in graffiti—a frozen snapshot of the last days before the collapse.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 场景6: 教堂 -->
+                    <div class="scene-card military-border hover-glow">
+                        <div class="scene-image">
+                            <img src="images/church.png" alt="Church">
+                        </div>
+                        <div class="scene-content">
+                            <h3>Church</h3>
+                            <p>Under shattered stained glass, a toppled cross rests silently in the dust.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <div class="logo-img">W</div>
+                <h1>Wasteland Rebirth</h1>
+            </div>
+            <p>Copyright © 2023 Wasteland Rebirth. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-steam"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links and tab content
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Add click event to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the tab to activate
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove all active states
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Add active state to current link and tab
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // If it's the home page, scroll to top
+                    
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                });
+            });
+            
+            // Explore button click event
+            document.getElementById('explore-btn').addEventListener('click', function() {
+                // Remove all active states
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                tabContents.forEach(tab => tab.classList.remove('active'));
+                
+                // Add active state to gameplay tab
+                document.querySelector('[data-tab="gameplay"]').classList.add('active');
+                document.getElementById('gameplay').classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // If there's an anchor in the URL, jump directly to the corresponding tab
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                // Remove all active states
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                tabContents.forEach(tab => tab.classList.remove('active'));
+                
+                // Add active state to corresponding tab
+                document.querySelector(`[data-tab="${hash}"]`).classList.add('active');
+                document.getElementById(hash).classList.add('active');
+            }
+            
+            // 创建飘落的灰尘粒子
+            function createDustParticles() {
+                const fallingDust = document.getElementById('fallingDust');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('dust-particle');
+                    
+                    // 随机大小
+                    const size = Math.random() * 3 + 1;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // 随机位置
+                    particle.style.left = `${Math.random() * 100}%`;
+                    
+                    // 随机动画时长
+                    const duration = Math.random() * 10 + 5;
+                    particle.style.animationDuration = `${duration}s`;
+                    
+                    // 随机延迟
+                    const delay = Math.random() * 5;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    fallingDust.appendChild(particle);
+                }
+            }
+            
+            // 图片点击放大功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeModal = document.querySelector('.close-modal');
+            
+            // 为所有图片添加点击事件
+            document.querySelectorAll('.character-image-rectangular img, .scene-image img, .media-item img').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.classList.add('active');
+                    modalImg.src = this.src;
+                    modalCaption.textContent = this.alt;
+                });
+            });
+            
+            // 关闭模态框
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // 点击模态框背景也关闭
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // 按ESC键关闭模态框
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // 初始化动态效果
+            createDustParticles();
+        });
+    </script>
+</body>
+</html>
