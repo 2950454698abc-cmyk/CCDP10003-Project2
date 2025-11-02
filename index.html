@@ -71,8 +71,8 @@
 
 /* 替换现有的文字logo为图片logo */
 .logo-image {
-    width: 180px; /* 根据您的logo尺寸调整 */
-    height: 50px; /* 根据您的logo尺寸调整 */
+    width: 250px; /* 根据您的logo尺寸调整 */
+    height: auto; /* 根据您的logo尺寸调整 */
     object-fit: contain;
 }
 
@@ -1221,7 +1221,7 @@
     <header>
     <div class="container header-content">
         <div class="logo">
-            <img src="images/logo.png" alt="Apocalypse: Dust and Blood" class="logo-image">
+            <img src="logo.png" alt="Apocalypse: Dust and Blood" class="logo-image">
         </div>
         <nav>
             <ul>
@@ -1293,7 +1293,7 @@
         <div class="features">
             <div class="feature-card military-border hover-glow">
                 <div class="feature-icon">
-                    <img src="images/gravedigger.jpg" alt="The Gravedigger" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-monument"></i>
                 </div>
                 <h3>The 'Gravedigger'</h3>
                 <p>He's the last gravedigger wondering on the dust, his name is 'Grayson'. He keeps the dead resting peacefully.</p>
@@ -1322,8 +1322,8 @@
                 <div class="feature-icon">
                     <i class="fas fa-eye"></i>
                 </div>
-                <h3>The 'Overseer'</h3>
-                <p>Baxter was the most stern and ruthless overseer on the dust. Anyone who attempted to disobey him would be punished severely.</p>
+                <h3>The 'Crowtalker'</h3>
+                <p>Moss, an elegant gentlement who wanders the dust with it's crow. If you hear the sound of crow on the dust, don't hesitate, Run.</p>
                 <a class="feature-link nav-link" data-tab="characters">View Details →</a>
             </div>
 
@@ -1357,7 +1357,7 @@
                 <div class="scenes-grid">
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/abandoned-city.png" alt="Abandoned City">
+                            <img src="Nuclearplant.png" alt="Abandoned Nuclear Plant">
                         </div>
                         <div class="scene-content">
                             <h3>Abandoned Nuclear Plant</h3>
@@ -1367,7 +1367,7 @@
                     </div>
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/desert-wasteland.png" alt="Desert Wasteland">
+                            <img src="oldworldcity.png" alt="Old World City Ruins">
                         </div>
                         <div class="scene-content">
                             <h3>Old World City Ruins (Gateway to the Old World 2)</h3>
@@ -1377,7 +1377,7 @@
                     </div>
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/underground-shelter.png" alt="Underground Shelter">
+                            <img src="settlement.png" alt="Derelict Survival's Settlements">
                         </div>
                         <div class="scene-content">
                             <h3>Derelict Survival's Settlements</h3>
@@ -1401,24 +1401,48 @@
             <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
 
             <div class="content-section military-border">
-                <h2>Radiation Zone Exploration</h2>
-                <p>Venture into high-radiation areas to find precious resources, but beware of mutated creatures and radiation poisoning. Radiation zones contain remnants of pre-war technology, but are also full of dangers.</p>
+		<h2>Text-based Battle Royal</h2>
+		<p>A text-based battle royale game is a game where:</p>
+
+<p>There are many players (or characters) competing until only one survives.</p>
+
+<p>The entire game is controlled and displayed using text, not graphics.</p>
+
+<p>Players make decisions (attack, defend, run, use item, etc.) by typing commands or choosing options.</p>
+
+<p>Events, combat, and world descriptions are shown using text messages.</p>
+
+<h3>Think Fortnite or PUBG, but instead of 3D graphics, in 2D displays and simple illustrations you see displays in game like:</h3>
+
+<p>Seaching for resources... </p>
+
+<p>Found Wooden Sticks x2!</p>
+
+<h3>During a combat with other players:</h3>
+
+<p>You press 'Attack bottom', the enemy's head displays the damage value...</p>
+
+<p>For more gameplay concept details, check the video below</p>
+
+
+                <h2>Dust Exploration</h2>
+                <p>The radiation zone on the dust will expand overtime as the game processes, it's lethal, be aware of the time, do not fall into the radiation zone.</p>
                 
                 <div class="media-container">
                     <div class="media-item">
-                        <img src="images/radiation-zone.png" alt="Radiation Zone Exploration">
+                        <img src="Exploration.png" alt="Radiation Zone Exploration">
                         <div class="media-caption">High-radiation areas are full of dangers</div>
                     </div>
                     <div class="media-item">
-                        <img src="images/resource-collection.png" alt="Resource Collection">
+                        <img src="Looting.png" alt="Resource Collection">
                         <div class="media-caption">Searching for precious resources</div>
                     </div>
                 </div>
                 
                 <h3>Exploration Mechanics</h3>
                 <ul>
-                    <li>Dynamic weather system affects radiation levels and visibility</li>
-                    <li>Use Geiger counters to detect radiation levels</li>
+                    <li>There are six players in one game, looting for sources, fighting others, and try to be the last survivor on the dust.</li>
+                    <li></li>
                     <li>Radiation protection equipment degrades over time and requires regular maintenance</li>
                     <li>Discover hidden underground shelters and military facilities</li>
                 </ul>
@@ -1445,182 +1469,37 @@
                 
                 <div class="media-container">
                     <div class="media-item">
-                        <img src="images/shelter-exterior.png" alt="Shelter Exterior">
-                        <div class="media-caption">Shelter exterior defense</div>
+                        <img src="Theoldworld.png" alt="The Old World">
+                        <div class="media-caption">The Old World</div>
                     </div>
                     <div class="media-item">
-                        <img src="images/shelter-interior.png" alt="Shelter Interior">
-                        <div class="media-caption">Shelter interior facilities</div>
+                        <img src="Thenewworld.png" alt="The New World	">
+                        <div class="media-caption">The New World</div>
                     </div>
                 </div>
                 
-                <h3>Construction System</h3>
+                <h3>Two maps</h3>
                 <ul>
-                    <li>Modular building system, freely design shelter layout</li>
-                    <li>Upgrade defense facilities to deal with increasingly powerful threats</li>
-                    <li>Establish hydroponic farms and water purification systems to ensure food supply</li>
-                    <li>Recruit survivors and assign work tasks</li>
+                    <li>Explore 12 different areas after nuclear war</li>
+                    <li>Each area on the dust are special, you can confront with different enemies</li>
+                    <li>Loot for tools, resources, craft weapons to empower yourself</li>
+                    <li>Be careful with other survivors, remember, there's no sympathy or kindness on the dust</li>
+		<li>Player must enter The Old World via 3 particular areas in The New World (as indicated on the map with tunnel sign): Old World City Ruins, Whispering tunnel and Blighting Forest</li>
                 </ul>
                 
-                <div class="video-container">
-                    <!-- 插入视频 -->
-                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <p style="text-align: center; margin-top: 10px;">Shelter Construction Tutorial Video</p>
-            </div>
-        </div>
-
+              <div class="video-container">
+    <video controls poster="video-poster.jpg">
+上午 11:51 2025/11/2        <source src="project2.mp4" type="video/mp4">
+        <source src="project2.webm" type="video/webm">
+        
+    </video>
+</div>
+<p style="text-align: center; margin-top: 10px;">Core Gameplay Concept Video</p>
 
 
 
 <!-- 在Gameplay页面的现有内容之后添加以下代码 -->
 
-<!-- 黑色幸存者风格玩法区域 -->
-<div class="content-section military-border">
-    <h2>Core Gameplay simulation</h2>
-    <p>Text-based Battle Royal, avoid radiation zone, search for resources, confront other survivors on the dust, fight, and do whatever to survive. For more details, please check the video above.</p>
-    
-    <!-- 核心玩法流程图 -->
-    <div class="gameplay-flow">
-        <h3>Core gameplay</h3>
-        <div class="flow-steps">
-            <div class="flow-step">
-                <div class="step-icon">🔍</div>
-                <div class="step-text">区域搜索</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-                <div class="step-icon">🛠️</div>
-                <div class="step-text">装备制作</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-                <div class="step-icon">⚔️</div>
-                <div class="step-text">生存对抗</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-                <div class="step-icon">☢️</div>
-                <div class="step-text">躲避辐射</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 区域搜索系统 -->
-<div class="content-section military-border">
-    <h2>区域搜索系统</h2>
-    <p>在不同区域中搜索资源，每个区域提供独特的物品和危险</p>
-    
-    <div class="search-mechanic">
-        <div class="area-grid">
-            <div class="area-card military-border" data-area="hospital" onclick="searchArea('hospital')">
-                <div class="area-icon">🏥</div>
-                <h4>废弃医院</h4>
-                <p class="area-resources">资源：医疗用品、绷带、药物</p>
-                <div class="search-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <button class="search-btn">搜索区域</button>
-            </div>
-            
-            <div class="area-card military-border" data-area="factory" onclick="searchArea('factory')">
-                <div class="area-icon">🏭</div>
-                <h4>旧工厂</h4>
-                <p class="area-resources">资源：金属零件、工具、电子元件</p>
-                <div class="search-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <button class="search-btn">搜索区域</button>
-            </div>
-            
-            <div class="area-card military-border" data-area="school" onclick="searchArea('school')">
-                <div class="area-icon">🏫</div>
-                <h4>废弃学校</h4>
-                <p class="area-resources">资源：书籍、食物、日常用品</p>
-                <div class="search-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <button class="search-btn">搜索区域</button>
-            </div>
-            
-            <div class="area-card military-border" data-area="military" onclick="searchArea('military')">
-                <div class="area-icon">🎯</div>
-                <h4>军事基地</h4>
-                <p class="area-resources">资源：武器、弹药、防具</p>
-                <div class="search-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <button class="search-btn">搜索区域</button>
-            </div>
-        </div>
-        
-        <div class="search-results" id="searchResults">
-            <h4>搜索成果</h4>
-            <div class="results-container" id="resultsContainer">
-                <p class="no-results">点击上方区域卡片开始搜索...</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 制作合成系统 -->
-<div class="content-section military-border">
-    <h2>物品制作系统</h2>
-    <p>将收集到的资源合成为更强大的装备和生存工具</p>
-    
-    <div class="crafting-system">
-        <div class="crafting-recipes">
-            <div class="recipe-card military-border">
-                <h4>简易矛</h4>
-                <div class="materials">
-                    <span class="material-item">金属管 ×1</span>
-                    <span class="material-operator">+</span>
-                    <span class="material-item">布料 ×2</span>
-                </div>
-                <div class="craft-result">→ 简易矛</div>
-                <button class="craft-btn" onclick="craftItem('spear')">制作</button>
-            </div>
-            
-            <div class="recipe-card military-border">
-                <h4>医疗包</h4>
-                <div class="materials">
-                    <span class="material-item">绷带 ×2</span>
-                    <span class="material-operator">+</span>
-                    <span class="material-item">酒精 ×1</span>
-                </div>
-                <div class="craft-result">→ 医疗包</div>
-                <button class="craft-btn" onclick="craftItem('medkit')">制作</button>
-            </div>
-            
-            <div class="recipe-card military-border">
-                <h4>防毒面具</h4>
-                <div class="materials">
-                    <span class="material-item">塑料瓶 ×1</span>
-                    <span class="material-operator">+</span>
-                    <span class="material-item">过滤器 ×1</span>
-                    <span class="material-operator">+</span>
-                    <span class="material-item">橡皮筋 ×2</span>
-                </div>
-                <div class="craft-result">→ 防毒面具</div>
-                <button class="craft-btn" onclick="craftItem('mask')">制作</button>
-            </div>
-        </div>
-        
-        <div class="inventory">
-            <h4>当前库存</h4>
-            <div class="inventory-items" id="inventoryItems">
-                <div class="inventory-item">金属管: <span id="metalPipeCount">0</span></div>
-                <div class="inventory-item">布料: <span id="clothCount">0</span></div>
-                <div class="inventory-item">绷带: <span id="bandageCount">0</span></div>
-                <div class="inventory-item">酒精: <span id="alcoholCount">0</span></div>
-                <div class="inventory-item">塑料瓶: <span id="bottleCount">0</span></div>
-                <div class="inventory-item">过滤器: <span id="filterCount">0</span></div>
-                <div class="inventory-item">橡皮筋: <span id="rubberBandCount">0</span></div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <
 <style>
@@ -2107,7 +1986,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container page-content">
             <div class="page-header">
                 <h1>Survivor Characters</h1>
-                <p>Meet the various characters struggling to survive in the wasteland</p>
+                <p>Meet the various Survivors struggling to survive in the wasteland... Click on to the characters to view details!</p>
             </div>
 
             <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -2118,7 +1997,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/gravedigger.jpg" alt="The Gravedigger">
+        <img src="gravedigger.png" alt="The Gravedigger">
     </div>
     <div class="character-details">
         <h2>The 'Gravedigger'</h2>
@@ -2171,7 +2050,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/trickster.jpg" alt="The Trickster">
+        <img src="trickster.png" alt="The Trickster">
     </div>
     <div class="character-details">
         <h2>The 'Trickster'</h2>
@@ -2224,7 +2103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/starborn.jpg" alt="The StarBorn">
+        <img src="Starborn.png" alt="The StarBorn">
     </div>
     <div class="character-details">
         <h2>The 'StarBorn'</h2>
@@ -2261,7 +2140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="character-abilities">
             <div class="ability-item">
                 <span class="ability-name">'Starlight Blessing':</span>
-                <span class="ability-description">Heals allies in moonlight; gains enhanced abilities during night time.</span>
+                <span class="ability-description">Heals herself in moonlight; gains enhanced abilities during night time.</span>
             </div>
             <div class="ability-item">
                 <span class="ability-name">'Celestial Protection':</span>
@@ -2277,11 +2156,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/overseer.jpg" alt="The Overseer">
+        <img src="crowtalker.png" alt="The Crowtalker">
     </div>
     <div class="character-details">
-        <h2>The 'Overseer'</h2>
-        <p>Baxter was the most stern and ruthless overseer on the dust. Anyone who attempted to disobey him would be punished severely.</p>
+        <h2>The 'Crowtalker'</h2>
+        <p>He wore a dark cloak made by stitching together countless crow feathers and scraps of fabric. On his face was a half-missing wooden carving of a crow. His movements had the pauses and sudden agility of a bird, with a piercing-eyed ghostly crow perched on his shoulder at all times. He was taciturn and his voice was hoarse like the cries of a crow. The air around him was filled with the scent of decaying wood and ancient spices.</p>
         
         <div class="stats-bar">
             <div class="stat">
@@ -2313,16 +2192,16 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Special Abilities</h3>
         <div class="character-abilities">
             <div class="ability-item">
-                <span class="ability-name">'Commanding Presence':</span>
-                <span class="ability-description">Allies within range gain 20% increased damage and defense.</span>
+                <span class="ability-name">'Raven trainer':</span>
+                <span class="ability-description">It can command ravens to conduct short-range reconnaissance, mark enemies or objects; deal additional damage to enemies in a state of blindness or silence; and make very little noise when moving.</span>
             </div>
             <div class="ability-item">
-                <span class="ability-name">'Iron Discipline':</span>
-                <span class="ability-description">Enemies are 25% more likely to flee when facing the Overseer.</span>
+                <span class="ability-name">'Crowds of crows filling the sky':</span>
+                <span class="ability-description">Your raven can briefly distract an enemy's vision, making it more likely for their next attack to fail.</span>
             </div>
             <div class="ability-item">
-                <span class="ability-name">'Strategic Planning':</span>
-                <span class="ability-description">Reveals enemy positions and weaknesses in controlled areas.</span>
+                <span class="ability-name">'Dark feathers':</span>
+                <span class="ability-description">In the shadowed areas or at night, Mos's movement speed is increased by 30%, and it becomes more difficult for enemies to detect him.</span>
             </div>
         </div>
     </div>
@@ -2330,7 +2209,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/chemist.jpg" alt="The Chemist">
+        <img src="chemist.png" alt="The Chemist">
     </div>
     <div class="character-details">
         <h2>The 'Chemist'</h2>
@@ -2367,7 +2246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="character-abilities">
             <div class="ability-item">
                 <span class="ability-name">'Alchemical Mastery':</span>
-                <span class="ability-description">Creates powerful potions that provide temporary buffs and heal allies.</span>
+                <span class="ability-description">Creates powerful potions that provide temporary buffs and heal herself.</span>
             </div>
             <div class="ability-item">
                 <span class="ability-name">'Toxic Brew':</span>
@@ -2383,11 +2262,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="character-profile">
     <div class="character-image-rectangular">
-        <img src="images/scout.jpg" alt="The Scout">
+        <img src="wraith.png" alt="The Wraith">
     </div>
     <div class="character-details">
-        <h2>The 'Scout'</h2>
-        <p>Expert navigator and tracker, capable of finding safe paths through the most dangerous territories.</p>
+        <h2>The 'Wraith'</h2>
+        <p>Silas form is obscured by a tattered, hooded cloak that seems to drink the light, woven from shredded ballistic cloth and dark insulation. What can be seen of his body is wrapped in tight bandages, not to hold wounds, but to contain the faint, eerie hum of energy that emanates from within. His movements are utterly silent, and his only visible feature from under the hood is the faint, cyan glow of his optics.</p>
         
         <div class="stats-bar">
             <div class="stat">
@@ -2419,16 +2298,16 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Special Abilities</h3>
         <div class="character-abilities">
             <div class="ability-item">
-                <span class="ability-name">'Pathfinder':</span>
-                <span class="ability-description">Reveals hidden paths and shortcuts on the map.</span>
+                <span class="ability-name">'The Hunt':</span>
+                <span class="ability-description">Can temporarily become invisible and pass through traps; generates a personal energy shield; moves silently and leaves no tracks.</span>
             </div>
             <div class="ability-item">
-                <span class="ability-name">'Eagle Eye':</span>
-                <span class="ability-description">Spots enemies and resources from twice the normal distance.</span>
+                <span class="ability-name">'Phantom walk':</span>
+                <span class="ability-description">Become invisible and intangible for 4 seconds. You cannot attack or be attacked during this time. Cooldown: 90 seconds.</span>
             </div>
             <div class="ability-item">
-                <span class="ability-name">'Silent Movement':</span>
-                <span class="ability-description">Moves 40% quieter and leaves no tracks.</span>
+                <span class="ability-name">'Static veil':</span>
+                <span class="ability-description">Your next instance of damage from a trap or enemy attack is negated, and you gain 25% movement speed for 3 seconds.</span>
             </div>
         </div>
     </div>
@@ -2438,110 +2317,464 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 
-    <!-- 世界观设计 -->
-    <div id="worldview" class="tab-content">
-        <div class="container page-content">
-            <div class="page-header">
-                <h1>World Setting</h1>
-                <p>History and background of the post-nuclear wasteland world</p>
-            </div>
-
-            <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
-
-            <div class="content-section military-border">
-    <h2>The Great Destruction</h2>
-    <p>In 2077, the twilight of human civilization arrived. A global nuclear war known as "The Great Catastrophe" wiped out the civilization achievements of humanity in just seven hours. Cities turned into ruins, the earth was covered with radioactive dust, and the sky was shrouded in eternal gloom.</p>
-    
-    <p>The nuclear winter lasted for a full twenty years. When the survivors finally emerged from their underground shelters and climbed back to the surface, they found a world completely transformed. The once prosperous cities now only had distorted steel skeletons, covered in radioactive dust and rust. The natural ecosystem had completely collapsed, replaced by all kinds of strange creatures mutated by radiation.</p>
-    
-    <p>Fifty years later, the world is divided into several distinct regions: Old World and New World </p>
-
-<h2> Old World </h2>
-
-<h3> Old World City Ruins </h3>
-
-<p>The ruins of the old world, where once prosperous cities stood, have completely fallen into disrepair and have been reoccupied by wild plants. Hospitals, Residential houses, school.......They are almost deserted and seem to be full of vitality compared to the new world. Here, you can search for the resources of the old world, the remaining high-tech items from the past. By making use of them, you are sure to carve out a new path in the new world. </p>
-
-
-<h2> New World </h2>
-    
-    <h3>Dust</h3>
-    <p>The vast desert and wasteland seem relatively safe on the surface, but in reality they are full of hidden dangers. Sandstorms, extreme temperature differences, scarce resources, and mutated creatures lurking beneath the sand dunes make traversing this area a life-and-death challenge.</p>
-    
-    <h3>Survivor Outposts</h3>
-    <p>The Last Spark of Human Civilization. From rudimentary shantytowns to relatively well-structured underground shelters, these outposts are important places for survivors to conduct transactions, rest, and obtain information. However, even these "safe zones" often become targets of attackers.</p>
-
-
-    
-    <p>In this world, the constraints of morality and law have long ceased to exist. The survivors have split into multiple factions:</p>
-
-<h2> New Factions, Associations and Forces on the dust </h2>
-    
-    <h3>The New California Republic</h3>
-    <p>An organization that attempts to restore the pre-war government system, possessing the most advanced technology and military strength, but severely hindered by bureaucracy.</p>
-    
-    <h3>The Raiders' Tribe</h3>
-    <p>A savage group of survivors who make a living by engaging in violent plundering, occupying the core area of the ruined city.</p>
-    
-    <h3>The Technological Renaissance Society</h3>
-    <p>An organization dedicated to restoring pre-war technologies, possessing advanced manufacturing and medical techniques.</p>
-    
-    <h3>Wilderness Wanderers</h3>
-    <p>Solitary survivors who roam the wasteland relying on their knowledge of the wilderness and survival skills.</p>
-    
-    <p>The player will struggle to survive in this harsh world, having to confront natural threats such as radiation, hunger, and disease, as well as navigate among various factions and make crucial choices that will determine their fate. Every exploration may bring valuable resources or deadly dangers; every encounter may be a life-saving hand or a hidden dagger.</p>
-    
-    <p>This is the end times - a world where a civilization has perished, but human nature is still struggling to survive. Here, every drop of clean water is worth exchanging with blood, and every glimmer of hope may be swallowed up by endless dust in the next moment.</p>
-    
-    <div class="media-container">
-        <div class="media-item">
-            <img src="images/post-nuclear-world.png" alt="After Nuclear War">
-            <div class="media-caption">World scene after nuclear war</div>
+ <!-- 世界观设计 -->
+<div id="worldview" class="tab-content">
+    <div class="container page-content">
+        <div class="page-header">
+            <h1>World Setting</h1>
+            <p>History and background of the post-nuclear wasteland world</p>
         </div>
-    </div>
-                
+
+        <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+        <!-- The Great Destruction Section -->
+        <div class="content-section military-border">
+            <h2>The Great Destruction</h2>
+            <p>In 2077, the twilight of human civilization arrived. A global nuclear war known as "The Great Catastrophe" wiped out the civilization achievements of humanity in just seven hours. Cities turned into ruins, the earth was covered with radioactive dust, and the sky was shrouded in eternal gloom.</p>
+            
+            <p>The nuclear winter lasted for a full twenty years. When the survivors finally emerged from their underground shelters and climbed back to the surface, they found a world completely transformed. The once prosperous cities now only had distorted steel skeletons, covered in radioactive dust and rust. The natural ecosystem had completely collapsed, replaced by all kinds of strange creatures mutated by radiation.</p>
+            
+            <p>Fifty years later, the world is divided into several distinct regions: Old World and New World</p>
+
+<h2>The 'Mutation'</h2>
+
+	<p>With the nuclear radiation, everything have changed, mutation arised, some people died within diesease, died to mutated creatures, but there is a minority, gained extradinory, remarkable power from these mutations.</p>
+
+
+	 
+            <!-- Interactive Timeline -->
+            <div class="timeline-container">
                 <h3>Historical Timeline</h3>
-                <ul>
-                    <li><strong>2077</strong> - Global nuclear war breaks out, known as "The Great Destruction"</li>
-                    <li><strong>2077-2097</strong> - Nuclear winter, surface almost uninhabitable</li>
-                    <li><strong>2097</strong> - First shelters open, survivors return to the surface</li>
-                    <li><strong>2105</strong> - First large settlement "New Hope" established</li>
-                    <li><strong>2127</strong> - Present, players begin their wasteland journey</li>
-                </ul>
-                
-                <div class="video-container">
-                    <!-- 视频插入 -->
-                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="timeline">
+                    <div class="timeline-event">
+                        <div class="timeline-year">2077</div>
+                        <div class="timeline-content">
+                            <h4>The Great Destruction</h4>
+                            <p>Global nuclear war breaks out, wiping out civilization in just seven hours</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-year">2077-2097</div>
+                        <div class="timeline-content">
+                            <h4>Nuclear Winter</h4>
+                            <p>Surface becomes almost uninhabitable for twenty years</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-year">2097</div>
+                        <div class="timeline-content">
+                            <h4>Return to Surface</h4>
+                            <p>First shelters open, survivors return to the surface</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-year">2105</div>
+                        <div class="timeline-content">
+                            <h4>New Hope</h4>
+                            <p>First large settlement "New Hope" established</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-year">2127</div>
+                        <div class="timeline-content">
+                            <h4>Present Day</h4>
+                            <p>Players begin their wasteland journey</p>
+                        </div>
+                    </div>
                 </div>
-                <p style="text-align: center; margin-top: 10px;">World Background Introduction Video</p>
             </div>
+            
+            <!-- World After Nuclear War Image -->
+            <div class="world-after-war">
+                <img src="hero-background.png" alt="After Nuclear War">
+                <div class="image-caption">World scene after nuclear war</div>
+            </div>
+        </div>
 
-            <div class="content-section military-border">
-                <h2>Major Factions</h2>
-                <p>Multiple factions compete for power and resources in the wasteland, each with its own unique culture and goals.</p>
-                
-                <div class="media-container">
-                    <div class="media-item">
-                        <img src="images/ncr-base.png" alt="New California Republic">
-                        <div class="media-caption">New California Republic base</div>
+        <!-- World Regions Section -->
+        <div class="content-section military-border">
+            <h2>World Regions</h2>
+            
+            <!-- Old World Section -->
+            <div class="region-section">
+                <div class="region-header">
+                    <h3>Old World</h3>
+                </div>
+                <div class="region-content">
+                    <div class="region-description">
+                        <h4>Old World City Ruins</h4>
+                        <p>The ruins of the old world, where once prosperous cities stood, have completely fallen into disrepair and have been reoccupied by wild plants. Hospitals, Residential houses, school.......They are almost deserted and seem to be full of vitality compared to the new world. Here, you can search for the resources of the old world, the remaining high-tech items from the past. By making use of them, you are sure to carve out a new path in the new world.</p>
                     </div>
-                    <div class="media-item">
-                        <img src="images/raider-camp.png" alt="Raider Tribe">
-                        <div class="media-caption">Raider tribe camp</div>
+                </div>
+            </div>
+            
+            <!-- New World Section -->
+            <div class="region-section">
+                <div class="region-header">
+                    <h3>New World</h3>
+                </div>
+                <div class="region-content">
+                    <div class="subregion">
+                        <h4>Dust</h4>
+                        <p>The vast desert and wasteland seem relatively safe on the surface, but in reality they are full of hidden dangers. Sandstorms, extreme temperature differences, scarce resources, and mutated creatures lurking beneath the sand dunes make traversing this area a life-and-death challenge.</p>
+                    </div>
+                    <div class="subregion">
+                        <h4>Survivor Outposts</h4>
+                        <p>The Last Spark of Human Civilization. From rudimentary shantytowns to relatively well-structured underground shelters, these outposts are important places for survivors to conduct transactions, rest, and obtain information. However, even these "safe zones" often become targets of attackers.</p>
+
+	<p>Resources is everything on the dust, all the struggles, battles and fights were for resources, food, water sources, land resources, weapons, and so on... For food, people can even kill their own kind and eat them. For weapons, they can stab their lifelong companions, or even their loved ones... This is the cruel DUST.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Factions Section -->
+        <div class="content-section military-border">
+            <h2>New Factions, Associations and Forces on the dust</h2>
+            <p>In this world, the constraints of morality and law have long ceased to exist. The survivors have split into multiple factions:</p>
+            
+            <div class="factions-container">
+                <div class="faction-item">
+                    <div class="faction-image">
+                        <img src="riot.png" alt="New 'Riot' Republic">
+                    </div>
+                    <div class="faction-details">
+                        <h3>The New 'Riot' Republic</h3>
+                        <p>An organization that attempts to restore the pre-war government system, possessing the most advanced technology and military strength, but severely hindered by bureaucracy.</p>
                     </div>
                 </div>
                 
-                <h3>New California Republic</h3>
-                <p>Organization trying to rebuild pre-war government structure, has the most advanced technology and military power, but suffers from severe bureaucracy.</p>
+                <div class="faction-item">
+                    <div class="faction-image">
+                        <img src="raider.png" alt="Raider Tribe">
+                    </div>
+                    <div class="faction-details">
+                        <h3>The 'Raiders' Tribe</h3>
+                        <p>A savage group of survivors who make a living by engaging in violent plundering, occupying the core area of the ruined city.</p>
+                    </div>
+                </div>
                 
-                <h3>Raider Tribes</h3>
-                <p>Barbaric survivor groups, survive by violent plunder, occupy core areas of ruined cities.</p>
+                <div class="faction-item">
+                    <div class="faction-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="faction-details">
+                        <h3>The Technological Renaissance Society</h3>
+                        <p>An organization dedicated to restoring pre-war technologies, possessing advanced manufacturing and medical techniques.</p>
+                    </div>
+                </div>
                 
-                <h3>Technology Revival Society</h3>
-                <p>Organization dedicated to restoring pre-war technology, masters advanced manufacturing and medical technology.</p>
+                <div class="faction-item">
+                    <div class="faction-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <div class="faction-details">
+                        <h3>Wilderness Wanderers</h3>
+                        <p>Solitary survivors who roam the wasteland relying on their knowledge of the wilderness and survival skills.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="survival-note">
+                <p>The player will struggle to survive in this harsh world, having to confront natural threats such as radiation, hunger, and disease, as well as navigate among various factions and make crucial choices that will determine their fate. Every exploration may bring valuable resources or deadly dangers; every encounter may be a life-saving hand or a hidden dagger.</p>
+                
+                <p class="quote">This is the end times - a world where a civilization has perished, but human nature is still struggling to survive. Here, every drop of clean water is worth exchanging with blood, and every glimmer of hope may be swallowed up by endless dust in the next moment.</p>
             </div>
         </div>
     </div>
+</div>
+
+<style>
+/* Timeline Styles */
+.timeline-container {
+    margin: 40px 0;
+    position: relative;
+}
+
+.timeline-container h3 {
+    color: #cd853f;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #8b4513;
+    padding-bottom: 10px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #5d4037, #8b4513, #a0522d);
+    border-radius: 2px;
+}
+
+.timeline-event {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 30px;
+}
+
+.timeline-event:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-year {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    background: #8b4513;
+    color: #1a1a22;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    min-width: 80px;
+    text-align: center;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: rgba(35, 35, 45, 0.7);
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 3px solid #8b4513;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    background: rgba(45, 45, 55, 0.8);
+    transform: translateX(5px);
+}
+
+.timeline-content h4 {
+    color: #cd853f;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.timeline-content p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* World After Nuclear War Image */
+.world-after-war {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.world-after-war img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #8b4513;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.image-caption {
+    margin-top: 10px;
+    color: #a0522d;
+    font-style: italic;
+}
+
+/* Region Sections */
+.region-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(35, 35, 45, 0.5);
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+}
+
+.region-section:last-child {
+    margin-bottom: 0;
+}
+
+.region-header h3 {
+    color: #cd853f;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #3a2a2a;
+    padding-bottom: 8px;
+}
+
+.region-content h4 {
+    color: #cd853f;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.subregion {
+    margin-bottom: 20px;
+}
+
+.subregion:last-child {
+    margin-bottom: 0;
+}
+
+/* Factions Container */
+.factions-container {
+    margin-top: 30px;
+}
+
+.faction-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(35, 35, 45, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid #3a2a2a;
+}
+
+.faction-item:hover {
+    transform: translateY(-5px);
+    border-color: #8b4513;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.faction-image {
+    flex: 0 0 200px;
+    margin-right: 20px;
+}
+
+.faction-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #8b4513;
+}
+
+.faction-icon {
+    flex: 0 0 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #5d4037, #8b4513);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 30px;
+    color: #1a1a22;
+    border-radius: 8px;
+    border: 1px solid #8b4513;
+}
+
+.faction-details {
+    flex: 1;
+}
+
+.faction-details h3 {
+    color: #cd853f;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.faction-details p {
+    color: #c0c0c0;
+    margin: 0;
+}
+
+/* Survival Note */
+.survival-note {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+}
+
+.survival-note p {
+    margin-bottom: 15px;
+}
+
+.survival-note .quote {
+    font-style: italic;
+    color: #cd853f;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #3a2a2a;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 20px;
+    }
+    
+    .timeline-year {
+        position: static;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-event {
+        padding-left: 0;
+    }
+    
+    .faction-item {
+        flex-direction: column;
+    }
+    
+    .faction-image, .faction-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+        flex: 0 0 auto;
+    }
+    
+    .faction-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 15px;
+    }
+}
+</style>
+
+<script>
+// Simple animation for timeline elements
+document.addEventListener('DOMContentLoaded', function() {
+    const timelineEvents = document.querySelectorAll('.timeline-event');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    timelineEvents.forEach(event => {
+        event.style.opacity = '0';
+        event.style.transform = 'translateX(-20px)';
+        event.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(event);
+    });
+    
+    // Faction item hover effects
+    const factionItems = document.querySelectorAll('.faction-item');
+    
+    factionItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(45, 45, 55, 0.7)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(35, 35, 45, 0.5)';
+        });
+    });
+});
+</script>
 
     <!-- 游戏特色 -->
     <div id="features" class="tab-content">
@@ -2559,12 +2792,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="media-container">
                     <div class="media-item">
-                        <img src="images/radiation-storm.png" alt="Radiation Storm">
+                        <img src="images/radiation-storm.png" alt="Hand-drawn Characters
+">
                         <div class="media-caption">Hand-drawn Characters</div>
                     </div>
                     <div class="media-item">
-                        <img src="images/acid-rain.png" alt="Acid Rain">
-                        <div class="media-caption">Hand-drawn maps and scenes</div>
+                        <img src="UI.png" alt="Hand-drawn map,scenes and UI">
+                        <div class="media-caption">Hand-drawn style maps, scenes and UI</div>
                     </div>
                 </div>
                 
@@ -2575,37 +2809,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li>Creates a poignant contrast against cold, rigid metal ruins, screaming "people lived here."</li>
                     <li>Watercolor-style skies can depict toxic sunsets and radiation storms with haunting beauty</li>
                     <li>Ink washes and rough textures perfectly embody decay, erosion, and the slow reclaiming of nature</li>
+		<li>Explores the critiques that post-apocalyptic games brought to players, to immersely sense the resources scarcity, tribalism and fragility of modern civilisation.</li>
                 </ul>
             </div>
 
             <div class="content-section military-border">
-                <h2>Mutation System</h2>
-                <p>Exposure to radiation may cause mutations, gaining special abilities or disabilities, depending on your choices and luck.</p>
+                <h2>Battle Royal gameplay</h2>
+                <p>Unlike traditional or conventional battle royal games, 'Apocalypse: Dust and Blood' aims to create a completely different and refreshing game experience: Text-based battle royal.</p>
                 
                 <div class="media-container">
                     <div class="media-item">
-                        <img src="images/beneficial-mutation.png" alt="Beneficial Mutation">
-                        <div class="media-caption">Beneficial mutation example</div>
+                        <img src="pistol.png" alt="Gains a pistol, gain bonus attack dmg">
+                        <div class="media-caption">Item Gaining</div>
                     </div>
                     <div class="media-item">
-                        <img src="images/harmful-mutation.png" alt="Harmful Mutation">
-                        <div class="media-caption">Harmful mutation example</div>
+                        <img src="Radiationzone.png" alt="Shrinking of safe areas">
+                        <div class="media-caption">Radiation Zone Expanding</div>
                     </div>
                 </div>
                 
-                <h3>Mutation Types</h3>
+                <h3>Other Game Features</h3>
                 <div class="feature-grid">
                     <div class="feature-item military-border">
-                        <h3>Beneficial Mutations</h3>
-                        <p>Night vision, radiation resistance, enhanced strength and other positive mutations</p>
+                        <h3>Game Intensity</h3>
+                        <p>Although text-based, time is still intensive! Radiation zone is expanding, the same places are shrinnking! You can confront with another survivor at anytime
+!</p>
                     </div>
                     <div class="feature-item military-border">
-                        <h3>Harmful Mutations</h3>
-                        <p>Radiation vulnerability, light sensitivity, reduced stamina and other negative mutations</p>
+                        <h3>Action times</h3>
+                        <p>Whether it's searching for supplies, manufacturing weapons, or just resting, all of these require time and effort! So, proper planning is the most important!</p>
                     </div>
                     <div class="feature-item military-border">
-                        <h3>Appearance Changes</h3>
-                        <p>Visible mutation effects like skin discoloration, glowing eyes</p>
+                        <h3>Gap in Strength</h3>
+                        <p>Differnet characters have different abilities, fully understand the skills and traits of each character, ensure that all skills and talents are utilized, whether in combat or during exploration, do your best to obtain more resources and improve your vision.</p>
                     </div>
                 </div>
             </div>
@@ -2617,7 +2853,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container page-content">
             <div class="page-header">
                 <h1>Wasteland Scenes</h1>
-                <p>Explore 12 unique scenes after nuclear war</p>
+                <p>Explore 12 unique scenes after nuclear war. The rough lines and thick coloring, combined with low saturation, create an apocalyptic atmosphere.</p>
             </div>
 
             <a class="back-btn nav-link" data-tab="home"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -2629,7 +2865,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景1: 低语隧道 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/whispering-tunnels.png" alt="Whispering Tunnels">
+                            <img src="tunnel.png" alt="Whispering Tunnels">
                         </div>
                         <div class="scene-content">
                             <h3>Whispering Tunnels (Gateway to the Old World 1)</h3>
@@ -2641,7 +2877,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景2: 广播塔 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/broadcast-tower.png" alt="Broadcast Tower">
+                            <img src="tower.png" alt="Broadcast Tower">
                         </div>
                         <div class="scene-content">
                             <h3>Broadcast Tower</h3>
@@ -2652,7 +2888,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景3: 旧世界遗址 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/old-world-ruins.png" alt="Old World City Ruins">
+                            <img src="oldworldcity.png" alt="Old World City Ruins">
                         </div>
                         <div class="scene-content">
                             <h3>Old World City Ruins (Gateway to the Old World 2)</h3>
@@ -2664,7 +2900,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景4: 废弃核电站 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/nuclear-plant.png" alt="Abandoned Nuclear Plant">
+                            <img src="Nuclearplant.png" alt="Abandoned Nuclear Plant">
                         </div>
                         <div class="scene-content">
                             <h3>Abandoned Nuclear Plant</h3>
@@ -2675,7 +2911,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景5: 灾变森林 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/blighting-forest.png" alt="Blighting Forest">
+                            <img src="forest.png" alt="Blighting Forest">
                         </div>
                         <div class="scene-content">
                             <h3>Blighting Forest (Gateway to the Old World 3)</h3>
@@ -2687,7 +2923,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景6: 破败的幸存者聚集地 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/derelict-settlement.png" alt="Derelict Survival's Settlements">
+                            <img src="settlement.png" alt="Derelict Survival's Settlements">
                         </div>
                         <div class="scene-content">
                             <h3>Derelict Survival's Settlements</h3>
@@ -2700,11 +2936,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- 旧世界区域 -->
             <div class="world-section">
                 <h2 class="world-section-title">The Old World</h2>
+<h3>Players must enter The Old World via 'Whispering Tunnels', 'Old World City Ruins' and 'Blighting Forest'
                 <div class="scenes-grid">
                     <!-- 场景1: 住宅区 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/residential-district.png" alt="Residential District">
+                            <img src="resident.png" alt="Residential District">
                         </div>
                         <div class="scene-content">
                             <h3>Residential District</h3>
@@ -2715,7 +2952,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景2: 购物中心 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/shopping-mall.png" alt="Shopping Mall">
+                            <img src="mall.png" alt="Shopping Mall">
                         </div>
                         <div class="scene-content">
                             <h3>Shopping Mall</h3>
@@ -2726,7 +2963,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景3: 医院 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/hospital.png" alt="Hospital">
+                            <img src="hospital.png" alt="Hospital">
                         </div>
                         <div class="scene-content">
                             <h3>Hospital</h3>
@@ -2737,7 +2974,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景4: 体育馆 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/sport-stadium.png" alt="Sport Stadium">
+                            <img src="stadium.png" alt="Sport Stadium">
                         </div>
                         <div class="scene-content">
                             <h3>Sport Stadium</h3>
@@ -2748,7 +2985,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景5: 学校 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/school.png" alt="School">
+                            <img src="school.png" alt="School">
                         </div>
                         <div class="scene-content">
                             <h3>School</h3>
@@ -2759,7 +2996,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- 场景6: 教堂 -->
                     <div class="scene-card military-border hover-glow">
                         <div class="scene-image">
-                            <img src="images/church.png" alt="Church">
+                            <img src="church.png" alt="Church">
                         </div>
                         <div class="scene-content">
                             <h3>Church</h3>
@@ -2777,7 +3014,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="logo-img">W</div>
                 <h1>Wasteland Rebirth</h1>
             </div>
-            <p>Copyright © 2023 Wasteland Rebirth. All rights reserved.</p>
+            <p>Copyright © 2025 Wasteland Rebirth. All rights reserved.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-steam"></i></a>
                 <a href="#"><i class="fab fa-discord"></i></a>
@@ -2912,4 +3149,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
-
